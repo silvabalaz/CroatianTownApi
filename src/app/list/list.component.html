@@ -35,13 +35,15 @@
            type="text"
            placeholder="Search By Input"
            (keyup) ="onChanges($event)"/>
-    <p ngIf*="filteredItem">{filteredItem}</p>>
-           </div>
-  </div>
-
-  <div class="card-footer">
-    <div class="row">
+      {{filteredItem}}
+      <div [formGroup]="searchForm">
+        <select class="form-control" name="Communities">
+          <option *ngFor="let item of filteredItem" [value]="item.name">{{ item.name }}</option>
+        </select>
+      </div>
+    <div class="card-footer">
+      <div class="row">
+      </div>
     </div>
-  </div>
-
-
+ </div>
+</div>

@@ -87,11 +87,15 @@ export class ListComponent implements OnInit {
     const filteredCounty = this.pipecounty.transform(this.counties, this.searchTerm);
     const filteredTown = this.pipetown.transform(this.towns, this.searchTerm);
     const filteredCommunity = this.pipecommunity.transform(this.communities, this.searchTerm);
-    if(filteredCounty) {
+
+    if (filteredCounty) {
+      console.log('filteredCounty ' + filteredCounty );
       this.filteredItem = filteredCounty;
     } else if (filteredTown) {
+      console.log('filteredTown' + filteredTown);
       this.filteredItem = filteredTown;
     } else if(filteredCommunity) {
+      console.log('filteredCommunity' + filteredCommunity);
       this.filteredItem = filteredCommunity;
     }
 }

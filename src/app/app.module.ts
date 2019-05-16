@@ -33,7 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     FilterPipeCounty,
     FilterPipeTown,
     FilterPipeCommunity
-  ]
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
