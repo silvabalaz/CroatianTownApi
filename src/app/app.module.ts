@@ -8,14 +8,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {CroatiaData} from './croatia-data';
 import {CommonModule} from '@angular/common';
-import {FilterPipe} from './FilterPipe';
+import {FilterPipeCounty} from './FilterPipeCounty';
+import {FilterPipeTown} from './FilterPipeTown';
+import {FilterPipeCommunity} from './FilterPipeCommunity';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    FilterPipe
+    FilterPipeCounty,
+    FilterPipeTown,
+    FilterPipeCommunity
   ],
   imports: [
     BrowserModule,

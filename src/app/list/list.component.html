@@ -29,13 +29,25 @@
             </select>
           </div>
         </div>
-    <label for="search">Search by word</label>
+   <label for="search">Enter word</label>
     <input id="search" formControlName="searchTerm"
            class="form-control"
            type="text"
-           placeholder="Search"
+           placeholder="Search By Input"
            (keyup) ="onChanges($event)"/>
-    </div>
+      <button class="list-group-item list-group-item-action rounded-0"
+              *ngFor="let item of counties | filterpipe: searchTerm ">
+              {{ item.name }}
+      </button>
+      <button class="list-group-item list-group-item-action rounded-0"
+              *ngFor="let item of towns| filterpipe: searchTerm ">
+              {{ item.name }}
+      </button>
+      <button class="list-group-item list-group-item-action rounded-0"
+              *ngFor="let item of communities | filterpipe: searchTerm ">
+              {{ item.name }}
+      </button>
+    </div> -->
   </div>
 
   <div class="card-footer">

@@ -3,7 +3,7 @@ import {County} from './croatia';
 
 
 @Pipe({
-  name: 'filterpipe'
+  name: 'filterpipecounty'
 })
 export class FilterPipe implements PipeTransform {
   transform(counties: County[], id: number): County[] {
