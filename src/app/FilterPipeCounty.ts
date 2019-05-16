@@ -6,10 +6,19 @@ import {County} from './croatia';
   name: 'filterpipecounty'
 })
 export class FilterPipeCounty implements PipeTransform {
-  transform(counties: County[], id: number): County[] {
-    if (!counties || !id) {
+  transform(counties: County[], input: any): any {
+    if (!counties || !input) {
       return counties;
     }
-    return counties.filter(items => items.ID === id);
+    let id = counties.filter(items => items.ID === input);
+    let name = counties.filter(items => items.name === input);
+    let entityType = counties.filter(items => items.entityType === input);
+    if( id ) {
+      return id;
+    } else if ( name ) {
+      return name;
+    } else if ( entityType ) {
+      return entityType;
+    }
   }
 }

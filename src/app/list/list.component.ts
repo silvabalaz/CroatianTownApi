@@ -31,6 +31,7 @@ export class ListComponent implements OnInit {
 
   searchTerm = '';
   searchForm: FormGroup;
+  filteredItem: any;
 
   constructor(private fb: FormBuilder,
               private listService: ListService,
@@ -42,7 +43,8 @@ export class ListComponent implements OnInit {
     this.listForm = this.fb.group({
     });
     this.searchForm = this.fb.group({
-      searchTerm: ''
+      searchTerm: '',
+      filteredItem: ''
     });
   }
 
@@ -82,9 +84,16 @@ export class ListComponent implements OnInit {
 
   onChanges(val: any): void {
     this.searchTerm = val.target.value;
-    any filteredCounty = this.pipecounty.transform(this.counties, this.searchTerm);
-    any filteredTown = this.pipetown.transform(this.towns, this.searchTerm);
-    any filteredCommunity = this.pipecommunity.transform(this.communities, this.searchTerm);
+    const filteredCounty = this.pipecounty.transform(this.counties, this.searchTerm);
+    const filteredTown = this.pipetown.transform(this.towns, this.searchTerm);
+    const filteredCommunity = this.pipecommunity.transform(this.communities, this.searchTerm);
+    if(filteredCounty) {
+      this.filteredItem = filteredCounty;
+    } else if (filteredTown) {
+      this.filteredItem = filteredTown;
+    } else if(filteredCommunity) {
+      this.filteredItem = filteredCommunity;
+    }
 }
 
 }
