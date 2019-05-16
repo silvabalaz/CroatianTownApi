@@ -3,13 +3,20 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import { County, Town, Community } from '../croatia';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ListService } from '../list.service';
-
+import { FilterPipeCounty } from '../FilterPipeCounty';
+import { FilterPipeTown } from '../FilterPipeTown';
+import { FilterPipeCommunity } from '../FilterPipeCommunity';
 
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
+  providers: [
+    FilterPipeCounty,
+    FilterPipeTown,
+    FilterPipeCommunity
+  ]
 })
 export class ListComponent implements OnInit {
   pageTitle = 'Counties, communities, towns';
@@ -28,7 +35,10 @@ export class ListComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private listService: ListService,
               private route: ActivatedRoute,
-              private router: Router ) {
+              private router: Router,
+              private pipecounty: FilterPipeCounty,
+              private pipetown: FilterPipeTown,
+              private pipecommunity: FilterPipeCommunity ) {
     this.listForm = this.fb.group({
     });
     this.searchForm = this.fb.group({
@@ -72,6 +82,9 @@ export class ListComponent implements OnInit {
 
   onChanges(val: any): void {
     this.searchTerm = val.target.value;
+    any filteredCounty = this.pipecounty.transform(this.counties, this.searchTerm);
+    any filteredTown = this.pipetown.transform(this.towns, this.searchTerm);
+    any filteredCommunity = this.pipecommunity.transform(this.communities, this.searchTerm);
 }
 
 }

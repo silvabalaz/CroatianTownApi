@@ -5,7 +5,7 @@ import {Town} from './croatia';
 @Pipe({
   name: 'filterpipetown'
 })
-export class FilterPipe implements PipeTransform {
+export class FilterPipeTown implements PipeTransform {
   transform(town: Town[], id: number): Town[] {
     if (!town || !id) {
       return town;

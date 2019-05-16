@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {CroatiaData} from './croatia-data';
 import {CommonModule} from '@angular/common';
-import {FilterPipeCounty} from './FilterPipeCounty';
+import { FilterPipeCounty } from './FilterPipeCounty';
 import {FilterPipeTown} from './FilterPipeTown';
 import {FilterPipeCommunity} from './FilterPipeCommunity';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,6 +29,11 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientInMemoryWebApiModule.forRoot(CroatiaData),
     HttpClientModule
   ],
+  exports: [
+    FilterPipeCounty,
+    FilterPipeTown,
+    FilterPipeCommunity
+  ]
   providers: [],
   bootstrap: [AppComponent]
 })

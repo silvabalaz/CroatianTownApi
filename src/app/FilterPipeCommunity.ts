@@ -5,11 +5,20 @@ import {Community} from './croatia';
 @Pipe({
   name: 'filterpipecommunity'
 })
-export class FilterPipe implements PipeTransform {
-  transform(communities: Community[], id: number): Community[] {
-    if (!communities || !id) {
+export class FilterPipeCommunity implements PipeTransform {
+  transform(communities: Community[], input: any): any {
+    if (!communities || !input) {
       return communities;
     }
-    return communities.filter(items => items.ID === id);
+    let id = communities.filter(items => items.ID === input);
+    let name = communities.filter(items => items.name === input);
+    let entityType = communities.filter(items => items.entityType === input);
+    if( id ) {
+      return id;
+    } else if ( name ) {
+      return name;
+    } else if ( entityType ) {
+      return entityType;
+    }
   }
 }

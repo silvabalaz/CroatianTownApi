@@ -34,20 +34,7 @@
            class="form-control"
            type="text"
            placeholder="Search By Input"
-           (keyup) ="onChanges($event)"/>
-      <button class="list-group-item list-group-item-action rounded-0"
-              *ngFor="let item of counties | filterpipe: searchTerm ">
-              {{ item.name }}
-      </button>
-      <button class="list-group-item list-group-item-action rounded-0"
-              *ngFor="let item of towns| filterpipe: searchTerm ">
-              {{ item.name }}
-      </button>
-      <button class="list-group-item list-group-item-action rounded-0"
-              *ngFor="let item of communities | filterpipe: searchTerm ">
-              {{ item.name }}
-      </button>
-    </div> -->
+           (keyup) ="onChanges($event)"/></div>
   </div>
 
   <div class="card-footer">
@@ -55,7 +42,4 @@
     </div>
   </div>
 
-<div *ngIf="errorMessage" class="alert alert-danger">
-  Error: {{ errorMessage }}
-</div>
 
