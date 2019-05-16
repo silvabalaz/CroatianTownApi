@@ -23,12 +23,16 @@ export class ListComponent implements OnInit {
   communitiesByCounty: Community[];
 
   searchTerm = '';
+  searchForm: FormGroup;
 
   constructor(private fb: FormBuilder,
               private listService: ListService,
               private route: ActivatedRoute,
               private router: Router ) {
     this.listForm = this.fb.group({
+    });
+    this.searchForm = this.fb.group({
+      searchTerm: ''
     });
   }
 
@@ -65,5 +69,9 @@ export class ListComponent implements OnInit {
      this.communitiesByCounty = this.communities.filter(items => items.countyName === filterBy);
      console.log('this.communitiesByCounty' +  this.communitiesByCounty);
   }
+
+  onChanges(val: any): void {
+    this.searchTerm = val.target.value;
+}
 
 }
