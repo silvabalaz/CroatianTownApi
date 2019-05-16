@@ -1,3 +1,59 @@
-<p>
-  list works!
-</p>
+<div class="card light">
+  <div class="card-header" >
+    {{pageTitle}}
+  </div>
+  <div class="card-body" *ngIf="counties?.length" [formGroup]="listForm">
+      <div class="form-group row">
+          <label class="col-md-5 col-form-label">Croatia Counties</label>
+          <div class="col-md-6">
+            <select class="form-control" name="counties" (change)="changeByCounty($event)" >
+              <option *ngFor="let item of counties" [value]="item.ID" >{{ item.name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-5 col-form-label" >Croatia Towns</label>
+          <div class="col-md-6">
+            <select class="form-control" name="towns" (change)="changeByCounty($event)">
+              <option *ngFor="let item of townsByCounty"  [value]="item.ID" >{{ item.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-5 col-form-label" >Croatia Communities</label>
+          <div class="col-md-6">
+            <select class="form-control" name="Communities" (change)="changeByCounty($event)">
+              <option *ngFor="let item of communitiesByCounty" [value]="item.ID">{{ item.name }}</option>
+            </select>
+          </div>
+        </div>
+    <!-- <label for="search">Find by transformer name...</label>
+    <input id="search" formControlName="searchTerm"
+           class="form-control"
+           type="text"
+           placeholder="Search By Name"
+           (keyup) ="onChanges($event)"/>
+    <label id="factionsEmpty" > </label>
+    <label id="factions" >Filter by faction: </label>
+    <select class="form-control" name="factions" formControlName = "factions" (change)="checkFaction($event)">
+      <option *ngFor="let item of factions"  [value]="item.name" >{{ item.name }}</option>
+    </select>
+      <button class="list-group-item list-group-item-action rounded-0"
+              *ngFor="let transformer of transformers | searchpipe:searchTerm | filterpipe:faction "
+              [routerLink]="['/transformers', transformer.id]">
+              {{ transformer.name}}
+      </button>
+    </div> -->
+  </div>
+
+  <div class="card-footer">
+    <div class="row">
+    </div>
+  </div>
+
+<div *ngIf="errorMessage" class="alert alert-danger">
+  Error: {{ errorMessage }}
+</div>
+

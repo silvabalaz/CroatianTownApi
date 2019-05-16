@@ -1,0 +1,14 @@
+.card{
+  background-color: #c2e7b98a;
+}
+.card-header {
+  background-color:hsl(125, 23%, 43%);
+  color: white;
+  font-weight: bold;
+  font-family: 'M+PLUS+1p' !important;
+}
+
+.btn-primary {
+  background-color: #2a8527;
+  border-color: #d1ffb3;
+}
